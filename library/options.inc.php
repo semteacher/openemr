@@ -758,6 +758,13 @@ function generate_form_field($frow, $currvalue) {
     echo "<div style='display:none'><textarea name='form_{$field_id}' id='form_{$field_id}' stye='display:none'>".$currvalue."</textarea></div>";
     echo "</a>";
   }
+
+  // facilities list
+  else if ($data_type == 35) {
+    //echo generate_select_list("form_$field_id", $list_id, $currvalue,
+   //   $description, $showEmpty ? $empty_title : '');
+   dropdown_facility($selected = $currvalue, $name = "form_$field_id", $allow_unspecified = true);
+  }
   
 }
 
@@ -1234,6 +1241,13 @@ function generate_print_field($frow, $currvalue) {
     echo "</a>";
   }
 
+  // facilities list
+  else if ($data_type == 35) {
+    //echo generate_select_list("form_$field_id", $list_id, $currvalue,
+   //   $description, $showEmpty ? $empty_title : '');
+    dropdown_facility($selected = $currvalue, $name = "form_$field_id", $allow_unspecified = true);
+  }
+
 }
 
 function generate_display_field($frow, $currvalue) {
@@ -1502,6 +1516,13 @@ function generate_display_field($frow, $currvalue) {
     for($i=0;$i<sizeof($arr);$i++){
       $s.=$arr[$i];
     }
+  }
+
+  // facilities list
+  else if ($data_type == 35) {
+    $urow = sqlQuery("SELECT id, name FROM facility ".
+      "WHERE id = ?", array($currvalue) );
+    $s = htmlspecialchars($urow['name'],ENT_NOQUOTES);
   }
 
   return $s;
