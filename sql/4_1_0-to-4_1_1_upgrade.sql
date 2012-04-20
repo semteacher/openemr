@@ -251,7 +251,7 @@ DROP TABLE `temp_table_one`;
 #EndIf
 
 #IfMissingColumn patient_data facilityID
-ALTER TABLE `patient_data` ADD COLUMN `facilityID` tinyint(11) NOT NULL default Null AFTER ProviderID COMMENT 'store the Facility ID';
+ALTER TABLE `patient_data` ADD COLUMN `facilityID` tinyint(11) default Null AFTER ProviderID COMMENT 'store the Facility ID';
 #EndIf
 
 #IfNotRow layout_options field_id facilityID
@@ -266,6 +266,6 @@ update `layout_options` SET `seq`= 6 where field_id='hipaa_message' and form_id=
 update `layout_options` SET `seq`= 5 where field_id='hipaa_voice' and form_id='DEM' and group_name = '3Choices';
 update `layout_options` SET `seq`= 4 where field_id='hipaa_notice' and form_id='DEM' and group_name = '3Choices';
 update `layout_options` SET `seq`= 3 where field_id='pharmacy_id' and form_id='DEM' and group_name = '3Choices';
-INSERT INTO `layout_options` (form_id, field_id, group_name, title, seq, data_type, uor, fld_length, max_length, title_cols, datacols, description ) VALUES ('DEM' , 'facilityID', '3Choices', 'Facility', 2, 35, 1, 0, 255, 1, 3, 'Referring Facility');
+INSERT INTO `layout_options` (form_id, field_id, group_name, title, seq, data_type, uor, fld_length, max_length, titlecols, datacols, description ) VALUES ('DEM' , 'facilityID', '3Choices', 'Facility', 2, 35, 1, 0, 255, 1, 3, 'Referring Facility');
 #EndIf
 
