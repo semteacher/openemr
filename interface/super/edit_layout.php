@@ -54,7 +54,6 @@ $datatypes = array(
   "33" => xl("Race and Ethnicity"),
   "34" => xl("NationNotes"),
   "35" => xl("Facilities without All"),
-  "36" => xl("Facilities with All"),
 );
 
 function nextGroupOrder($order) {

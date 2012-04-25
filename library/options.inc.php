@@ -766,14 +766,6 @@ function generate_form_field($frow, $currvalue) {
     }
     dropdown_facility($selected = $currvalue, $name = "form_$field_id_esc", $allow_unspecified = true, $allow_allfacilities = false);
   }
-
-  //facilities drop-down list with "All Facilities" option
-  else if ($data_type == 36) {   
-    if (empty($currvalue)){
-   	  $currvalue = 0;
-    }
-    dropdown_facility($selected = $currvalue, $name = "form_$field_id_esc", $allow_unspecified = true, $allow_allfacilities = true);
-  }  
 }
 
 function generate_print_field($frow, $currvalue) {
@@ -1252,11 +1244,6 @@ function generate_print_field($frow, $currvalue) {
   //facilities drop-down list without "All Facilities" option
   else if ($data_type == 35) {
     dropdown_facility($selected = $currvalue, $name = "form_$field_id_esc", $allow_unspecified = true, $allow_allfacilities = false);
-  }
-
-  //facilities drop-down list with "All Facilities" option
-  else if ($data_type == 36) {
-    dropdown_facility($selected = $currvalue, $name = "form_$field_id_esc", $allow_unspecified = true, $allow_allfacilities = true);
   }
 }
 
@@ -2113,7 +2100,7 @@ function dropdown_facility($selected = '', $name = 'form_facility', $allow_unspe
     echo "    <option value=\"$option_value\" $option_selected_attr>$option_content</option>\n";
   }
 
-  if ($allow_unspecified&&$allow_allfacilities) {
+  if ($allow_unspecified && $allow_allfacilities) {
     $option_value = '0';
     $option_selected_attr = '';
     if ( $selected == '0' ) {
